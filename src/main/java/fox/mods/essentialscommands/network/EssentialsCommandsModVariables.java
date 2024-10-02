@@ -67,6 +67,8 @@ public class EssentialsCommandsModVariables {
             PlayerVariables original = ((PlayerVariables) event.getOriginal().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
             PlayerVariables clone = ((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
             clone.godMode = original.godMode;
+            clone.muted = original.muted;
+            clone.muteDuration = original.muteDuration;
             if (!event.isWasDeath()) {
             }
         }
@@ -80,7 +82,7 @@ public class EssentialsCommandsModVariables {
         @SubscribeEvent
         public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
             if (event.getObject() instanceof Player && !(event.getObject() instanceof FakePlayer))
-                event.addCapability(new ResourceLocation("accessdenied", "player_variables"), new PlayerVariablesProvider());
+                event.addCapability(new ResourceLocation("essentials_commands", "player_variables"), new PlayerVariablesProvider());
         }
 
         private final PlayerVariables playerVariables = new PlayerVariables();
@@ -104,6 +106,8 @@ public class EssentialsCommandsModVariables {
 
     public static class PlayerVariables {
         public boolean godMode = false;
+        public boolean muted = false;
+        public double muteDuration = 3600.0;
 
         public void syncPlayerVariables(Entity entity) {
             if (entity instanceof ServerPlayer serverPlayer)
@@ -113,12 +117,16 @@ public class EssentialsCommandsModVariables {
         public Tag writeNBT() {
             CompoundTag nbt = new CompoundTag();
             nbt.putBoolean("godMode", godMode);
+            nbt.putBoolean("muted", muted);
+            nbt.putDouble("muteDuration", muteDuration);
             return nbt;
         }
 
         public void readNBT(Tag tag) {
             CompoundTag nbt = (CompoundTag) tag;
             godMode = nbt.getBoolean("godMode");
+            muted = nbt.getBoolean("muted");
+            muteDuration = nbt.getDouble("muteDuration");
         }
     }
 
@@ -144,6 +152,8 @@ public class EssentialsCommandsModVariables {
                 if (!context.getDirection().getReceptionSide().isServer()) {
                     PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
                     variables.godMode = message.data.godMode;
+                    variables.muted = message.data.muted;
+                    variables.muteDuration = message.data.muteDuration;
                 }
             });
             context.setPacketHandled(true);

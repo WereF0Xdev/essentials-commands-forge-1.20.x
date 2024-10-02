@@ -11,15 +11,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
+import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
-import fox.mods.essentialscommands.main.ToggleGodMode;
+import fox.mods.essentialscommands.main.UnmutePlayer;
 
 @Mod.EventBusSubscriber
-public class ToggleGodModeCommand {
+public class UnmutePlayerCommand {
     @SubscribeEvent
     public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("god").requires(s -> s.hasPermission(4)).executes(arguments -> {
+        event.getDispatcher().register(Commands.literal("unmute").requires(s -> s.hasPermission(4)).then(Commands.argument("player", EntityArgument.player()).executes(arguments -> {
             Level world = arguments.getSource().getUnsidedLevel();
             double x = arguments.getSource().getPosition().x();
             double y = arguments.getSource().getPosition().y();
@@ -31,9 +32,9 @@ public class ToggleGodModeCommand {
             if (entity != null)
                 direction = entity.getDirection();
 
-            ToggleGodMode.execute(entity);
+            UnmutePlayer.execute(arguments, entity);
             return 0;
-        }));
+        })));
     }
 }
 
