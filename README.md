@@ -5,23 +5,24 @@ Essentials Commands is a Minecraft mod designed to add useful commands for serve
 Most of the commands take inspiration from the plugin EssentialsX, aiming to provide a similar alternative for Forge and in the future, for other loaders.
 
 <h2>COMMANDS</h2>
-- /discord [Link a Discord server] <br> ~_**DONE**_~
-- /god [Enables/Disables God Mode] <br> ~_**DONE**_~
-- /day [Turns day time] <br> ~_**DONE**_~
-- /sun [Turns day time] <br>
-- /night [Turns night time] <br> ~_**DONE**_~
+- /discord [Link a Discord server] ~_**DONE**_~ <br>
+- /god [Enables/Disables God Mode] ~_**DONE**_~ <br>
+- /day [Turns day time] ~_**DONE**_~ <br>
+- /sun [Turns day time] ~_**DONE**_~<br>
+- /night [Turns night time] ~_**DONE**_~ <br>
 - /repair [Repairs the tool in your hand] <br>
-- /mute [Mute a player] <br> ~_**DONE**_~
-- /unmute [Unmute a player] <br> ~_**DONE**_~
+- /mute [Mute a player] ~_**DONE**_~ <br>
+- /unmute [Unmute a player] ~_**DONE**_~ <br>
 - /sethome [Set a home] <br>
 - /home [Teleport to your home] <br>
 - /delhome [Delete your home] <br>
-- /suicide [Alternative to /kill] <br>
+- /suicide [Alternative to /kill] ~_**DONE**_~ <br>
 - /top [Teleports you to the surface] <br>
-- /creative [Creative mode] <br>
-- /survival [Survival mode] <br>
-- /spectator [Spectator mode] <br>
-- /fly [Flight mode] <br>
+- /creative [Creative mode] ~_**DONE**_~ <br>
+- /survival [Survival mode] ~_**DONE**_~ <br>
+- /spectator [Spectator mode] ~_**DONE**_~ <br>
+- /adventure [Adventure mode] ~_**DONE**_~ <br>
+- /fly [Flight mode] ~_**DONE**_~ <br>
 - /world [Teleport through dimensions] <br>
 - /thunder [Strike a thunderbolt] <br>
 - /strike [Strike a thunderbolt] <br>
@@ -35,8 +36,7 @@ Most of the commands take inspiration from the plugin EssentialsX, aiming to pro
 - /hat [Wear the item in your hand] <br>
 - /opgive [Give up to 3000 items to a player] <br>
 - /wear [Wear the item in your hand] <br>
-- /spawn [Teleports you to spawn] <br>
-- /setspawn [Set spawn] <br>
+- /spawn [Teleports you to spawn] ~_**DONE**_~ <br>
 - /extinguish [Cools you off if you're on fire] <br>
 - /date [Sends the current time] <br>
 

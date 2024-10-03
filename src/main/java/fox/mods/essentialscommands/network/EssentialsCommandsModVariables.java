@@ -69,6 +69,9 @@ public class EssentialsCommandsModVariables {
             clone.godMode = original.godMode;
             clone.muted = original.muted;
             clone.muteDuration = original.muteDuration;
+            clone.spawnInCooldown = original.spawnInCooldown;
+            clone.homes = original.homes;
+            clone.flightEnabled = original.flightEnabled;
             if (!event.isWasDeath()) {
             }
         }
@@ -108,6 +111,9 @@ public class EssentialsCommandsModVariables {
         public boolean godMode = false;
         public boolean muted = false;
         public double muteDuration = 3600.0;
+        public boolean spawnInCooldown = false;
+        public int homes = 0;
+        public boolean flightEnabled = false;
 
         public void syncPlayerVariables(Entity entity) {
             if (entity instanceof ServerPlayer serverPlayer)
@@ -119,6 +125,9 @@ public class EssentialsCommandsModVariables {
             nbt.putBoolean("godMode", godMode);
             nbt.putBoolean("muted", muted);
             nbt.putDouble("muteDuration", muteDuration);
+            nbt.putBoolean("spawnInCooldown", spawnInCooldown);
+            nbt.putInt("homes", homes);
+            nbt.putBoolean("flightEnabled", flightEnabled);
             return nbt;
         }
 
@@ -127,6 +136,9 @@ public class EssentialsCommandsModVariables {
             godMode = nbt.getBoolean("godMode");
             muted = nbt.getBoolean("muted");
             muteDuration = nbt.getDouble("muteDuration");
+            spawnInCooldown = nbt.getBoolean("spawnInCooldown");
+            homes = nbt.getInt("homes");
+            flightEnabled = nbt.getBoolean("flightEnabled");
         }
     }
 
@@ -154,9 +166,14 @@ public class EssentialsCommandsModVariables {
                     variables.godMode = message.data.godMode;
                     variables.muted = message.data.muted;
                     variables.muteDuration = message.data.muteDuration;
+                    variables.spawnInCooldown = message.data.spawnInCooldown;
+                    variables.homes = message.data.homes;
+                    variables.flightEnabled = message.data.flightEnabled;
                 }
             });
             context.setPacketHandled(true);
         }
     }
 }
+
+
