@@ -33,7 +33,7 @@ public class TeleportToSpawn {
                             _serverPlayer.connection.teleport(EssentialsCommandsConfiguration.SPAWN_X.get(), EssentialsCommandsConfiguration.SPAWN_Y.get(), EssentialsCommandsConfiguration.SPAWN_X.get(), _ent.getYRot(), _ent.getXRot());
                     }
                     if (entity instanceof Player _player && !_player.level().isClientSide())
-                        _player.displayClientMessage(Component.literal("§aTeleported!"), false);
+                        _player.displayClientMessage(Component.literal("§aTeleported!"), true);
                     EssentialsCommandsMod.queueServerWork((int) (20 * EssentialsCommandsConfiguration.SPAWN_COOLDOWN.get()), () -> {
                         {
                             boolean _setval = false;
@@ -46,11 +46,11 @@ public class TeleportToSpawn {
                 });
             } else if (EssentialsCommandsConfiguration.SPAWN_ENABLED.get() == false) {
                 if (entity instanceof Player _player && !_player.level().isClientSide())
-                    _player.displayClientMessage(Component.literal("§c" + EssentialsCommandsConfiguration.SPAWN_DISABLED_MESSAGE.get()), false);
+                    _player.displayClientMessage(Component.literal("§c" + EssentialsCommandsConfiguration.SPAWN_DISABLED_MESSAGE.get()), true);
             }
         } else if ((entity.getCapability(EssentialsCommandsModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new EssentialsCommandsModVariables.PlayerVariables())).spawnInCooldown == true) {
             if (entity instanceof Player _player && !_player.level().isClientSide())
-                _player.displayClientMessage(Component.literal("§c" + EssentialsCommandsConfiguration.COOLDOWN_MESSAGE.get()), false);
+                _player.displayClientMessage(Component.literal("§c" + EssentialsCommandsConfiguration.COOLDOWN_MESSAGE.get()), true);
         }
     }
 }

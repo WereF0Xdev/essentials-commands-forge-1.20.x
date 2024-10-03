@@ -35,7 +35,7 @@ public class HealAndFeedCommand {
             HealAndFeed.execute(entity);
             return 0;
         }).then(
-                        Commands.literal("feed")
+                event.getDispatcher().register(Commands.literal("feed")
                                 .requires(s -> s.hasPermission(4))
                                 .executes(arguments -> {
                                     Level world = arguments.getSource().getUnsidedLevel();
@@ -53,7 +53,7 @@ public class HealAndFeedCommand {
                                     return 0;
                                 })
                 )
-        );
+        ));
     }
 }
 
